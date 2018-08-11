@@ -46,9 +46,6 @@ steps:
         /p:TrackFileAccess=false
         /p:OfficialBuild=true 
         /p:VisualStudioVersion=14.0 
-        /flp1:Summary;Verbosity=diagnostic;Encoding=UTF-8;LogFile=$(Build.SourcesDirectory)\Binaries\$(BuildConfiguration)\Roslyn.log 
-        /flp2:WarningsOnly;Verbosity=diagnostic;Encoding=UTF-8;LogFile=$(Build.SourcesDirectory)\Binaries\$(BuildConfiguration)\Roslyn.wrn 
-        /flp3:ErrorsOnly;Verbosity=diagnostic;Encoding=UTF-8;LogFile=$(Build.SourcesDirectory)\Binaries\$(BuildConfiguration)\Roslyn.err 
         /p:RoslynMyGetApiKey=$(Roslyn.MyGetApiKey) 
         /p:RoslynNuGetApiKey=$(Roslyn.NuGetApiKey) 
         /p:RoslynGitHubEmail=$(Roslyn.GitHubEmail) 
@@ -59,6 +56,7 @@ steps:
         /p:VersionStampToPublish=prerelease
         /p:DotNetSymbolServerTokenMsdl=$(microsoft-symbol-server-pat)
         /p:DotNetSymbolServerTokenSymWeb=$(symweb-symbol-server-pat)
+        /bl:$(Build.SourcesDirectory)\Binaries\$(BuildConfiguration)\MicroBuild.binlog
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
     maximumCpuCount: true
